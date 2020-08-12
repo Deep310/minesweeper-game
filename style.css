@@ -105,3 +105,20 @@ body{
     cursor: pointer;
     border: 2px solid black;
 }
+
+.one, .five {
+    color: #e76346;
+}
+  
+.two, .six {
+    color: #4199d3;
+}
+  
+.three, .seven {
+    color: #57da59;
+}
+  
+.four, .eight{
+    color: #bb41d3;
+}
+  

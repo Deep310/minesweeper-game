@@ -102,6 +102,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const total = square.getAttribute('data');
             if(total != 0){
                 square.classList.add('checked');
+                if (total == 1) square.classList.add('one')
+                if (total == 2) square.classList.add('two')
+                if (total == 3) square.classList.add('three')
+                if (total == 4) square.classList.add('four')
+                if (total == 5) square.classList.add('five')
+                if (total == 6) square.classList.add('six')
+                if (total == 7) square.classList.add('seven')
+                if (total == 8) square.classList.add('eight')
+                
                 square.innerHTML = total;
                 return;
             }

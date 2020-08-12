@@ -94,9 +94,11 @@ body{
     border-radius: 30px;
     cursor: pointer;
     border: 2px solid black;
+    margin-right: 40px;
 }
 
 #resetButton{
+    margin: 20px 0;
     padding: 10px 10px;
     font-family: monospace;
     font-size: 20px;
@@ -122,3 +124,14 @@ body{
     color: #bb41d3;
 }
   
+@media screen and (max-width: 992px){
+    .container{
+        flex-direction: column;
+    }
+    .container-left{
+        width: 100%;
+    }
+    .container-right{
+        width: 100%;
+    }
+}

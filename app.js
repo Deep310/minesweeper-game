@@ -3,10 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid');
     const flagsLeft = document.getElementById('flags-left');
     const result = document.getElementById('result');
+    const startButton = document.getElementById('startButton');
     let width = 10;
     let bombAmount = 20;
     let squares = [];
-    let isGameOver = false;
+    let isGameOver = true;
     let flags = 0;
 
     //function 1 - to create board 
@@ -38,6 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 addFlag(square);
             }
         }
+
+        startButton.addEventListener('click', () => {
+            isGameOver = false;
+        })
 
         //add numbers around bombs
         for(let i=0; i < squares.length; i++){
@@ -171,8 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // function 5 - to determine when game is over
     function gameOver(square){
-        result.innerHTML = 'BOOM, Game is Over!';
+        result.innerHTML = 'BOOM, You clicked on a mine! 💣';
         isGameOver = true;
+        startButton.disabled = true;
+        startButton.style.backgroundColor = "lightGrey";
 
         // show all bombs when game is over
         squares.forEach( square => {

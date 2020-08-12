@@ -1,18 +1,24 @@
 body{
-    background-color: #eb807c;
+    background-color: #be96df;
 }
 
 .container{
     display: flex;
+    width: 98vw;
+}
+
+.container-left{
+    display: flex;
     flex-direction: column;
-    width: 95vw;
+    width: 55%;
     align-items: center;
 }
 
 .title{
-    text-align: center;
-    padding-left: 50px;
-    margin-bottom: 0;
+    margin: 10px 0;
+    font-family: monospace;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .grid{
@@ -21,21 +27,19 @@ body{
     background-color: #dcd6bc;
     display: flex;
     flex-wrap: wrap;
-    margin: 10px 0 10px 50px;
     border: 10px solid #dcd6bc;
-}
-
-.grid div{
+    margin: 10px 0 ;
     text-align: center;
     font-size: 25px;
     font-family: monospace;
-    height: 40px;
-    width: 40px;
 }
+
 .valid {
     border: 5px solid;
     border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
     box-sizing: border-box;
+    height: 40px;
+    width: 40px;
 }
   
 .checked {
@@ -43,18 +47,61 @@ body{
     background-color: #cecab7;
     border-color: #9c998d;
     box-sizing: border-box;
+    height: 40px;
+    width: 40px;
 }
   
 .bomb {
     border: 5px solid;
     border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
     box-sizing: border-box;
+    height: 40px;
+    width: 40px;
 }
 
 .flags{
-    margin-top: 20px;
     font-size: 20px;
-    font-weight: bold;
     font-family: monospace;
+}
 
+#result{
+    text-align: center;
+    font-family: monospace;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.container-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 45%;
+}
+
+.instructions{
+    margin: 0;
+    font-size: 20px;
+    font-family: monospace;
+    line-height: 30px;
+}
+
+#startButton{
+    margin: 20px 0;
+    padding: 10px 10px;
+    font-family: monospace;
+    font-size: 20px;
+    background-color: greenyellow;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+#resetButton{
+    padding: 10px 10px;
+    font-family: monospace;
+    font-size: 20px;
+    background-color: greenyellow;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 2px solid black;
 }

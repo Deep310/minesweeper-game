@@ -1,6 +1,7 @@
 .container{
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin-top: 5vh;
 }
 
@@ -15,6 +16,7 @@
 .grid div{
     height: 40px;
     width: 40px;
+    
 }
 
 .bomb{
@@ -23,4 +25,10 @@
 
 .checked{
     background-color: greenyellow;
+}
+
+.flags{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }

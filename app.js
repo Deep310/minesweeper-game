@@ -1,26 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const grid = document.querySelector('.grid');
+    const flagsLeft = document.getElementById('flags-left');
+    const result = document.getElementById('result');
     let width = 10;
     let bombAmount = 20;
     let squares = [];
     let isGameOver = false;
     let flags = 0;
 
-    //function to create board 
+    //function 1 - to create board 
     function createBoard(){
 
+        flagsLeft.innerHTML = bombAmount;
         //get shuffled game array with random bombs
         const bombsArray = Array(bombAmount).fill('bomb');
         const emptyArray = Array(width*width - bombAmount).fill('valid');
         const gameArray = emptyArray.concat(bombsArray);
-        const shuffledArray = gameArray.sort( () => Math.random() - 0.5)
+        const shuffledArray = gameArray.sort( () => Math.random() - 0.5);
         
         for(let i = 0; i < width*width; i++) {
             const square = document.createElement('div');
+            // giving all squares an id
             square.setAttribute('id', i);
             square.classList.add(shuffledArray[i]);
-            grid.appendChild(square)
+            grid.appendChild(square);
             squares.push(square);
 
             // add event listener for normal click
@@ -28,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 click(square);
             })
 
-            // add event listener for ctrl and left click
+            // add event listener for right click
             square.oncontextmenu = function(e) {
                 e.preventDefault();
                 addFlag(square);
@@ -59,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     createBoard();
 
-    // add flag with right click
+    // function 2 - add flag with right click
     function addFlag(square){
         if( isGameOver) return;
         if(!square.classList.contains('checked') && (flags < bombAmount)){
@@ -67,18 +71,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 square.classList.add('flag');
                 square.innerHTML = '🚩';
                 flags++;
+                flagsLeft.innerHTML = bombAmount - flags;
+                // check for win after each flag added
                 checkForWin();
             }
             else{
                 square.classList.remove('flag');
                 square.innerHTML = '';
                 flags-- ;
+                flagsLeft.innerHTML = bombAmount - flags;
             }
         }
 
     }
 
-    // function to handle actions when square is clicked
+    // function 3 - to handle actions when a square is clicked
     function click(square){
         let currentId = square.id;
 
@@ -98,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // check all neighbouring squares once a square is clicked
+    // function 4 - check all neighbouring squares once a square is clicked
     function checkSquare(square, currentId){
         const isLeftEdge = (currentId % width) === 0 ;
         const isRightEdge = (currentId % width) === (width-1);
@@ -162,8 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10)
     }
 
+    // function 5 - to determine when game is over
     function gameOver(square){
-        console.log('BOOM, Game is Over!');
+        result.innerHTML = 'BOOM, Game is Over!';
         isGameOver = true;
 
         // show all bombs when game is over
@@ -174,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    // function to check for win
+    // function 6 - to check for win
     function checkForWin() {
         let matches = 0;
         for(let i = 0; i < squares.length; i++){
@@ -182,13 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 matches++;
             }
             if(matches === bombAmount){
-                console.log('You WIN!');
+                result.innerHTML = 'You Win!';
                 isGameOver = true;
             }
         }
     }
-
-
 })
 
 
